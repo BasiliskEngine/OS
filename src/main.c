@@ -1,4 +1,5 @@
 #include "monitor.h"
+#include "common.h"
 
 int main(struct multiboot *mboot_ptr)
 {
