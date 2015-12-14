@@ -3,6 +3,9 @@
 
 #include "common.h"
 
+extern u8int cursor_x;
+extern u8int cursor_y;
+
 void monitor_put(char c);
 void monitor_clear();
 void monitor_write(char *c);
