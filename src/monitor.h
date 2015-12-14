@@ -15,5 +15,27 @@ static void move_cursor()
 	outb(0x3D4, 15); // Tell VGA board, we are setting low cursor byte
 	outb(0x3D5, cursorLocation); // Send last cursorLocation
 }
+
+static void scroll()
+{
+	u8int attributeByte = (0 << 4) | (15 & 0x0F);
+	u16int blank = 0x20 | (attributeByte << 8);
+	
+	if (cursor_y >= 25)
+	{
+		int i;
+		for (i = 0 * 80; i < 24 * 80; i++)
+		{
+			video_memory[i] = video_memory[i + 80];
+		}
+
+		for (i = 24 * 80; i < 25 * 80; i++)
+		{
+			video_memory[i] = blank;
+		}
+
+		cursor_y = 24;
+	}
+}
  
 #endif
