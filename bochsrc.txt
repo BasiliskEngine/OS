@@ -1,6 +1,8 @@
 megs: 32
-romimage: file=/usr/share/bochs/BIOS-bochs-latest, address=0xf0000
+romimage: file=/usr/share/bochs/BIOS-bochs-latest, address=0x0000
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
 floppya: 1_44=/dev/loop0, status=inserted
+display_library: sdl
 boot: a
 log: bochsout.txt
 mouse: enabled=0
