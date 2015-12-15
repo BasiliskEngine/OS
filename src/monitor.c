@@ -14,6 +14,15 @@ static void move_cursor()
         outb(0x3D5, cursorLocation); // Send last cursorLocation
 }
 
+static void rewind_cursor() // moves cursor back one space
+{
+	u16int cursorLocation = cursor_y * 80 + cursor_x;
+	outb(0x3D4, 14);
+	outb(0x3D5, cursorLocation << 8);
+	outb(0x3D4, 15);
+	outb(0x3D5, cursorLocation);
+}
+
 static void scroll()
 {
         u8int attributeByte = (0 << 4) | (15 & 0x0F);
